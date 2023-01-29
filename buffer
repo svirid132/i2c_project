@@ -1,0 +1,33 @@
+https://3d-diy.ru/wiki/arduino-moduli/interfeys-peredachi-dannykh-i2c/
+
+arduino uno
+SDA - A4
+SCL - A5
+
+SK-iMX6-MB-SODIMM I2C:
+I2C1_SDA - x9 5
+I2C1_SCL - x9 6
+I2C2_SDA - x4 11
+I2C2_SCL - x4 12
+
+sudo chmod a+rw /dev/ttyACM0
+
+ls /dev/ | grep 'i2c-' 
+http://elinux.org/Interfacing_with_I2C_Devices 
+
+https://www.kernel.org/doc/Documentation/i2c/dev-interface прямой доступ
+i2c-tools - командная строка
+
+Узнать рабочий com-порт:
+sudo dmesg | grep tty
+
+https://www.kernel.org/doc/Documentation/i2c/dev-interface
+- не подключается #include <i2c/smbus.h>
+
+команды i2c
+узнать доступные slave устройства - i2cdetect -y 1
+узнать все ругистры у slave устройства - i2cdump -y 1 0x54
+получить значение 3 регистра - i2cget -y 1 0x54 0x03
+записаь значение второго регистра - i2cset -y 1 0x54 0x02 0xff
+
+
